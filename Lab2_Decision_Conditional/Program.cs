@@ -7,40 +7,45 @@ namespace Lab2_Decision_Conditional
         static void Main(string[] args)
         {
             bool repeat = true;
+            string name;
             do
             {
-                Console.Write("Please enter an integer from (1-100): ");
+                Console.Write("What is your name? ");
 
-                string oddOrEven = Console.ReadLine();
-                int.TryParse(oddOrEven, out int TestInt);
+                name = Console.ReadLine();
+                Console.Write("{0} please enter an integer from (1-100): ", name);
+
+                //string oddOrEven = Console.ReadLine();
+                //int.TryParse(oddOrEven, out int TestInt);
+                int testInt = Validation(name);
 
                 Console.Write("Output: ");
 
-                if ((TestInt % 2) == 0)
+                if ((testInt % 2) == 0)
                 {
-                    if (TestInt >= 2 && TestInt <= 25)
+                    if (testInt >= 2 && testInt <= 25)
                     {
-                        Console.WriteLine("The integer is even and less than 25.");
+                        Console.WriteLine("Even and less than 25.");
                     }
-                    else if (TestInt >= 26 && TestInt <= 60)
+                    else if (testInt >= 26 && testInt <= 60)
                     {
                         Console.WriteLine("Even.");
                     }
-                    else if (TestInt > 60)
+                    else if (testInt > 60)
                     {
-                        Console.WriteLine("{0}: Even.", TestInt);
+                        Console.WriteLine("{0}: Even.", testInt);
                     }
                 }
-                else if (TestInt > 60)
+                else if (testInt > 60)
                 {
-                    Console.WriteLine("{0}: Odd.", TestInt);
+                    Console.WriteLine("{0}: Odd.", testInt);
                 }
                 else
                 {
-                    Console.WriteLine("Odd.");
+                    Console.WriteLine("{0} and Odd.", testInt);
                 }
 
-                Console.WriteLine("Would you like to repeat (y/n)? :");
+                Console.WriteLine("{0} would you like to repeat (y/n)? :", name);
 
                 bool validAnswer = true;
                 while (validAnswer)
@@ -65,6 +70,22 @@ namespace Lab2_Decision_Conditional
                 }
 
             } while (repeat);
+        }
+        private static int Validation(string x)
+        {
+            while (true)
+            {
+                string oddOrEven = Console.ReadLine();
+                bool success = int.TryParse(oddOrEven, out int TestInt);
+                if (success && TestInt >= 1 && TestInt <= 100)
+                {
+
+                    return TestInt;
+                }
+                else
+                    Console.Write("{0}... you did not enter a valid integer from 1 to 100, Please try again: ", x);
+
+            }
         }
     }
 }
