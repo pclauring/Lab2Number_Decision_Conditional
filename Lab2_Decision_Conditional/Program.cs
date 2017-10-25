@@ -15,12 +15,12 @@ namespace Lab2_Decision_Conditional
                 name = Console.ReadLine();
                 Console.Write("{0} please enter an integer from (1-100): ", name);
 
-                //string oddOrEven = Console.ReadLine();
-                //int.TryParse(oddOrEven, out int TestInt);
+                //Validation of integer entry
                 int testInt = Validation(name);
 
                 Console.Write("Output: ");
 
+                //modulus to determine if even
                 if ((testInt % 2) == 0)
                 {
                     if (testInt >= 2 && testInt <= 25)
@@ -35,7 +35,7 @@ namespace Lab2_Decision_Conditional
                     {
                         Console.WriteLine("{0}: Even.", testInt);
                     }
-                }
+                } //odd numbers past this else if
                 else if (testInt > 60)
                 {
                     Console.WriteLine("{0}: Odd.", testInt);
